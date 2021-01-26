@@ -55,8 +55,8 @@ public class HomePage extends BasePage {
 
     @Step("Выбор категории")
     public void selectTypeMenu(String menu) {
-        upperMenu.findElement
-                (By.xpath(".//*[contains(text(),'" + menu + "')]")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(upperMenu.findElement
+                (By.xpath(".//*[contains(text(),'" + menu + "')]")))).click();
         log.info("выбрана категория " + menu);
         Allure.addAttachment("SelectCategory", new ByteArrayInputStream(((TakesScreenshot) driver)
                 .getScreenshotAs(OutputType.BYTES)));

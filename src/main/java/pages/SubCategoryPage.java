@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import java.io.ByteArrayInputStream;
 
@@ -21,7 +22,7 @@ public class SubCategoryPage extends BasePage {
 
     @Step("Выбор подкатегории")
     public void selectInnerCategory(String name) {
-        leftMenu.findElement(By.xpath(".//*[text()='" + name + "']")).click();
+        wait.until(ExpectedConditions.elementToBeClickable(leftMenu.findElement(By.xpath(".//*[text()='" + name + "']")))).click();
         log.info("Выбрана подкатегория " + name);
         Allure.addAttachment("SelectSubCategory", new ByteArrayInputStream(((TakesScreenshot) driver)
                 .getScreenshotAs(OutputType.BYTES)));
