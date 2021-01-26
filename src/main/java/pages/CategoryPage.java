@@ -30,7 +30,7 @@ public class CategoryPage extends BasePage {
 
     @Step("Выбрать brand")
     public CategoryPage selectBrand(String brand) {
-        blockBrand.findElement(By.xpath(".//span[text()='" + brand + "']//parent::div")).click();
+        wait.until(ExpectedConditions.visibilityOf(blockBrand.findElement(By.xpath(".//span[text()='" + brand + "']//parent::div")))).click();
         wait.until(ExpectedConditions.visibilityOf(informMessageAboutSearch));
         log.info("Выбран брэнд " + brand);
         Allure.addAttachment("SelectBrand", new ByteArrayInputStream(((TakesScreenshot) driver)
@@ -40,7 +40,7 @@ public class CategoryPage extends BasePage {
 
     @Step("Установить минимальную цену")
     public CategoryPage setMinPrice(String price) {
-        minPrice.click();
+        wait.until(ExpectedConditions.visibilityOf(minPrice)).click();
         minPrice.sendKeys(price);
         wait.until(ExpectedConditions.visibilityOf(informMessageAboutSearch));
         log.info("Установлена мин цена " + price);
