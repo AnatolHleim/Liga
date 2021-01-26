@@ -37,7 +37,7 @@ public class HomePage extends BasePage {
         }
         catch (Exception ignored) {
             log.info("Информ окно не появилось");
-            Allure.addAttachment("CloseInform", new ByteArrayInputStream(((TakesScreenshot) driver)
+            Allure.addAttachment("NotVisibleInform", new ByteArrayInputStream(((TakesScreenshot) driver)
                     .getScreenshotAs(OutputType.BYTES)));
         }
         wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(text(),'Поиск у нас и во всех магазинах')]")));
