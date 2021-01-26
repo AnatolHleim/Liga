@@ -31,25 +31,18 @@ public class HomePage extends BasePage {
         driver.get("https://market.yandex.ru/");
         log.info("Выполнен переход по ссылке");
         Assert.assertTrue(this.driver.getCurrentUrl().contains("https://market.yandex"));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Поиск у нас и во всех магазинах')]")));
-        Allure.addAttachment("OpenHomePage", new ByteArrayInputStream(((TakesScreenshot) driver)
-                .getScreenshotAs(OutputType.BYTES)));
-        return this;
-    }
-
-    @Step("Закрыть подсказку")
-    public HomePage closeInform() {
         try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),'Поиск у нас и во всех магазинах')]")));
             informWindow.click();
-            log.info("Информ окно закрыто");
-            wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(text(),'Поиск у нас и во всех магазинах')]")));
-            Allure.addAttachment("CloseInform", new ByteArrayInputStream(((TakesScreenshot) driver)
-                    .getScreenshotAs(OutputType.BYTES)));
-        } catch (NoSuchElementException ignored) {
+        }
+        catch (Exception ignored) {
             log.info("Информ окно не появилось");
             Allure.addAttachment("CloseInform", new ByteArrayInputStream(((TakesScreenshot) driver)
                     .getScreenshotAs(OutputType.BYTES)));
         }
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//*[contains(text(),'Поиск у нас и во всех магазинах')]")));
+        Allure.addAttachment("OpenHomePage", new ByteArrayInputStream(((TakesScreenshot) driver)
+                .getScreenshotAs(OutputType.BYTES)));
         return this;
     }
 

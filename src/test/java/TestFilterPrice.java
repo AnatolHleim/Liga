@@ -31,7 +31,6 @@ public class TestFilterPrice extends BaseTestClass {
     @Description("Выбираем первый товар по фильтру и проверяем соответствие по наименованию")
     public void test1()  {
         homePage.openHome()
-                .closeInform()
                 .selectTypeMenu("Электроника");
         subCategoryPage.selectInnerCategory("Телевизоры");
         categoryPage.setMinPrice("20000")
@@ -46,7 +45,6 @@ public class TestFilterPrice extends BaseTestClass {
     @Description("Выбираем первый товар по фильтру и проверяем соответствие по цене")
     public void test2()  {
         homePage.openHome()
-                .closeInform()
                 .selectTypeMenu("Электроника");
         subCategoryPage.selectInnerCategory("Телевизоры");
         categoryPage.setMinPrice("20000")
