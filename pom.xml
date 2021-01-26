@@ -28,7 +28,6 @@
         <groupId>io.qameta.allure</groupId>
         <artifactId>allure-junit4</artifactId>
         <version>2.13.5</version>
-        <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>log4j</groupId>
@@ -44,6 +43,11 @@
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
         <version>4.12</version>
+    </dependency>
+    <dependency>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-java-commons</artifactId>
+        <version>2.13.5</version>
     </dependency>
 </dependencies>
 
